@@ -5,6 +5,12 @@ LABEL authors="Lei"
 # 设置工作目录
 WORKDIR /app
 
+ENV POSTGRES_USER=aipan
+ENV POSTGRES_PASSWORD=aipan
+ENV POSTGRES_DB=aipan
+ENV DATABASE_URL=postgresql://$POSTGRES_USER:$POSTGRES_PASSWORD@aipan-db:5432/$POSTGRES_DB
+ENV SHADOW_DATABASE_URL=postgresql://$POSTGRES_USER:$POSTGRES_PASSWORD@aipan-db:5432/${POSTGRES_DB}_shadow
+
 # 安装 pnpm
 RUN npm install -g pnpm
 
